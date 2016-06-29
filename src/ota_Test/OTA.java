@@ -17,8 +17,13 @@ import com.squareup.okhttp.Response;
 public class OTA{
 	public static void main(String[] args) {
 	    //发送 GET 请求
-	    String s=OTA.sendGet("http://ota.itel-mobile.com/check.do", "pkg=SP7731G&vc=sp7731geaplus_dt-2016062815-ALPHA&nt=wifi&imei=357060073021605&operator=460015396617322&nation=China");
-	    System.out.println(s);
+//	    String s=OTA.sendGet("http://ota.itel-mobile.com/check.do", "pkg=SP7731G&vc=sp7731geaplus_dt-2016062939-ALPHA&nt=wifi&imei=357060073021605&operator=460015396617322&nation=China");
+//	    System.out.println(s);
+		String s=OTA.sendGet("http://ota.itel-mobile.com/check.do", "pkg=SP7731G&vc=sp7731geaplus_dt-2016062939-ALPHA&nt=wifi&imei=357060073021605&operator=460015396617322&nation=China");
+		for(int i=0;i<13.;i++){
+    		System.out.println(s.split(",")[i]);
+    	}
+
 	    
 	    //发送 POST 请求
 //	    String sr=OTA.sendPost("http://localhost:6144/Home/RequestPostString", "key=123&v=456");
@@ -61,7 +66,7 @@ public class OTA{
 	                connection.getInputStream()));
 	        String line;
 	        while ((line = in.readLine()) != null) {
-	            result += line;
+            	result += line;
 	        }
 	    } catch (Exception e) {
 	        System.out.println("发送GET请求出现异常！" + e);
